@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WorkerFileModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChuXe">
+          <Key>
+            <PropertyRef Name="CMND" />
+            <PropertyRef Name="License Plates" />
+          </Key>
+          <Property Name="CMND" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HangXe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="License Plates" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Manufacture" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ChuXe__License P__48CFD27E">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
+          <End Role="ChuXe" Type="Self.ChuXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="License Plates" />
+            </Principal>
+            <Dependent Role="ChuXe">
+              <PropertyRef Name="License Plates" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xe__Manufacture__3A81B327">
+          <End Role="HangXe" Type="Self.HangXe" Multiplicity="1" />
+          <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="Manufacture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorkerFileModelStoreContainer">
+          <EntitySet Name="ChuXe" EntityType="Self.ChuXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HangXe" EntityType="Self.HangXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ChuXe__License P__48CFD27E" Association="Self.FK__ChuXe__License P__48CFD27E">
+            <End Role="Xe" EntitySet="Xe" />
+            <End Role="ChuXe" EntitySet="ChuXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xe__Manufacture__3A81B327" Association="Self.FK__Xe__Manufacture__3A81B327">
+            <End Role="HangXe" EntitySet="HangXe" />
+            <End Role="Xe" EntitySet="Xe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkerFileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WorkerFileEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="ChuXes" EntityType="WorkerFileModel.ChuXe" />
+          <EntitySet Name="HangXes" EntityType="WorkerFileModel.HangXe" />
+          <EntitySet Name="Xes" EntityType="WorkerFileModel.Xe" />
+          <AssociationSet Name="FK__ChuXe__License_P__48CFD27E" Association="WorkerFileModel.FK__ChuXe__License_P__48CFD27E">
+            <End Role="Xe" EntitySet="Xes" />
+            <End Role="ChuXe" EntitySet="ChuXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xe__Manufacture__3A81B327" Association="WorkerFileModel.FK__Xe__Manufacture__3A81B327">
+            <End Role="HangXe" EntitySet="HangXes" />
+            <End Role="Xe" EntitySet="Xes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChuXe">
+          <Key>
+            <PropertyRef Name="CMND" />
+            <PropertyRef Name="License_Plates" />
+          </Key>
+          <Property Name="CMND" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="License_Plates" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Xe" Relationship="WorkerFileModel.FK__ChuXe__License_P__48CFD27E" FromRole="ChuXe" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="HangXe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Xes" Relationship="WorkerFileModel.FK__Xe__Manufacture__3A81B327" FromRole="HangXe" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="License_Plates" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="License_Plates" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Manufacture" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ChuXes" Relationship="WorkerFileModel.FK__ChuXe__License_P__48CFD27E" FromRole="Xe" ToRole="ChuXe" />
+          <NavigationProperty Name="HangXe" Relationship="WorkerFileModel.FK__Xe__Manufacture__3A81B327" FromRole="Xe" ToRole="HangXe" />
+        </EntityType>
+        <Association Name="FK__ChuXe__License_P__48CFD27E">
+          <End Type="WorkerFileModel.Xe" Role="Xe" Multiplicity="1" />
+          <End Type="WorkerFileModel.ChuXe" Role="ChuXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="License_Plates" />
+            </Principal>
+            <Dependent Role="ChuXe">
+              <PropertyRef Name="License_Plates" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xe__Manufacture__3A81B327">
+          <End Type="WorkerFileModel.HangXe" Role="HangXe" Multiplicity="1" />
+          <End Type="WorkerFileModel.Xe" Role="Xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Xe">
+              <PropertyRef Name="Manufacture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkerFileModelStoreContainer" CdmEntityContainer="WorkerFileEntities" >
+          <EntitySetMapping Name="ChuXes">
+            <EntityTypeMapping TypeName="WorkerFileModel.ChuXe">
+              <MappingFragment StoreEntitySet="ChuXe">
+                <ScalarProperty Name="License_Plates" ColumnName="License Plates" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HangXes">
+            <EntityTypeMapping TypeName="WorkerFileModel.HangXe">
+              <MappingFragment StoreEntitySet="HangXe">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Xes">
+            <EntityTypeMapping TypeName="WorkerFileModel.Xe">
+              <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+                <ScalarProperty Name="License_Plates" ColumnName="License Plates" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
