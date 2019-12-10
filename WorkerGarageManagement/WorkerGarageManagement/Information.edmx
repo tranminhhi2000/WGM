@@ -29,6 +29,7 @@
           <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Manufacture" Type="int" Nullable="false" />
+          <Property Name="Time Parking" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__ChuXe__License P__48CFD27E">
           <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
@@ -112,6 +113,7 @@
           <Property Name="Manufacture" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ChuXes" Relationship="WorkerFileModel.FK__ChuXe__License_P__48CFD27E" FromRole="Xe" ToRole="ChuXe" />
           <NavigationProperty Name="HangXe" Relationship="WorkerFileModel.FK__Xe__Manufacture__3A81B327" FromRole="Xe" ToRole="HangXe" />
+          <Property Name="Time_Parking" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK__ChuXe__License_P__48CFD27E">
           <End Type="WorkerFileModel.Xe" Role="Xe" Multiplicity="1" />
@@ -164,6 +166,7 @@
           <EntitySetMapping Name="Xes">
             <EntityTypeMapping TypeName="WorkerFileModel.Xe">
               <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="Time_Parking" ColumnName="Time Parking" />
                 <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
                 <ScalarProperty Name="License_Plates" ColumnName="License Plates" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

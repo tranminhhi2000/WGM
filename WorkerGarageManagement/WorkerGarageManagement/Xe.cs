@@ -22,6 +22,7 @@ namespace WorkerGarageManagement
         public string Name { get; set; }
         public string License_Plates { get; set; }
         public int Manufacture { get; set; }
+        public System.DateTime Time_Parking { get; set; }
     
         public virtual ICollection<ChuXe> ChuXes { get; set; }
         public virtual HangXe HangXe { get; set; }
