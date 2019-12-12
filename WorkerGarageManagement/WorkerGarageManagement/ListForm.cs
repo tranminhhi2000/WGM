@@ -19,6 +19,29 @@ namespace WorkerGarageManagement
             InitializeComponent();
             this.Load += ListForm_Load;
             this.dataGridView1.DoubleClick += dataGridView1_DoubleClick;
+            this.dataGridView1.KeyDown += dataGridView1_KeyDown;
+        }
+
+        void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if(this.dataGridView1.SelectedRows.Count == 1)
+                {
+                    if(MessageBox.Show("Do you want delete this?") == System.Windows.Forms.DialogResult.OK )
+                    {
+                        HangXe selected =
+                            (HangXe)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                        var db = new WorkerFileEntities();
+                        XeView deleted = db..Find(selected.ID);
+                        db.Xes.Remove(deleted);
+                        db.SaveChanges();
+                        
+
+
+                    }
+                }
+            }
         }
 
         void dataGridView1_DoubleClick(object sender, EventArgs e)
@@ -41,16 +64,6 @@ namespace WorkerGarageManagement
                 view[i].Time_Parking = data[i].Time_Parking.ToShortDateString();
             }
             this.dataGridView1.DataSource = view;
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                int index = dataGridView1.SelectedRows[0].Index;
-                string bienSo = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                
-            }
         }
     }
 }
