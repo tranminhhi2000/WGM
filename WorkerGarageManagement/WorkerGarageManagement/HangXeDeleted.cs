@@ -12,21 +12,9 @@ namespace WorkerGarageManagement
     using System;
     using System.Collections.Generic;
     
-    public partial class Xe
+    public partial class HangXeDeleted
     {
-        public Xe()
-        {
-            this.ChuXes = new HashSet<ChuXe>();
-            this.ChuXeDeleteds = new HashSet<ChuXeDeleted>();
-        }
-    
+        public int ID { get; set; }
         public string Name { get; set; }
-        public string License_Plates { get; set; }
-        public int Manufacture { get; set; }
-        public System.DateTime Time_Parking { get; set; }
-    
-        public virtual ICollection<ChuXe> ChuXes { get; set; }
-        public virtual HangXe HangXe { get; set; }
-        public virtual ICollection<ChuXeDeleted> ChuXeDeleteds { get; set; }
     }
 }

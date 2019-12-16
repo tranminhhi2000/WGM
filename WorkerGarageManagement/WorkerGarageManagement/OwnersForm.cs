@@ -18,15 +18,21 @@ namespace WorkerGarageManagement
         {
             business = new LogicLayer();
             InitializeComponent();
+            this.Load += OwnersForm_Load;
             btnSave.Click += btnSave_Click;
             btnCancel.Click += btnCancel_Click;
+
+        }
+
+        void OwnersForm_Load(object sender, EventArgs e)
+        {
+            
         }
 
         void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         void btnSave_Click(object sender, EventArgs e)
         {
             string cmnd = txtCMND.Text;

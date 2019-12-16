@@ -30,8 +30,8 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.rESTOREToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dELETEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRestore = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,26 +51,25 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rESTOREToolStripMenuItem,
-            this.dELETEToolStripMenuItem});
+            this.btnRestore,
+            this.btnDelete});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // rESTOREToolStripMenuItem
+            // btnRestore
             // 
-            this.rESTOREToolStripMenuItem.Name = "rESTOREToolStripMenuItem";
-            this.rESTOREToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.rESTOREToolStripMenuItem.Text = "RESTORE";
-            this.rESTOREToolStripMenuItem.Click += new System.EventHandler(this.rESTOREToolStripMenuItem_Click);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(65, 20);
+            this.btnRestore.Text = "RESTORE";
             // 
-            // dELETEToolStripMenuItem
+            // btnDelete
             // 
-            this.dELETEToolStripMenuItem.Name = "dELETEToolStripMenuItem";
-            this.dELETEToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.dELETEToolStripMenuItem.Text = "DELETE";
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(57, 20);
+            this.btnDelete.Text = "DELETE";
             // 
             // RecycleBinForm
             // 
@@ -94,7 +93,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem rESTOREToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dELETEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnRestore;
+        private System.Windows.Forms.ToolStripMenuItem btnDelete;
     }
 }

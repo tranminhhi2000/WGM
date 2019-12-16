@@ -15,6 +15,16 @@
           <Property Name="Birthday" Type="datetime" />
           <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="ChuXeDeleted">
+          <Key>
+            <PropertyRef Name="CMND" />
+            <PropertyRef Name="License Plates" />
+          </Key>
+          <Property Name="CMND" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="HangXe">
           <Key>
             <PropertyRef Name="ID" />
@@ -22,7 +32,23 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="HangXeDeleted">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Xe">
+          <Key>
+            <PropertyRef Name="License Plates" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="License Plates" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Manufacture" Type="int" Nullable="false" />
+          <Property Name="Time Parking" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XeDeleted">
           <Key>
             <PropertyRef Name="License Plates" />
           </Key>
@@ -43,8 +69,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Xe__Manufacture__3A81B327">
-          <End Role="HangXe" Type="Self.HangXe" Multiplicity="1" />
+        <Association Name="FK__ChuXeDele__Licen__5FB337D6">
+          <End Role="Xe" Type="Self.Xe" Multiplicity="1" />
+          <End Role="ChuXeDeleted" Type="Self.ChuXeDeleted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="License Plates" />
+            </Principal>
+            <Dependent Role="ChuXeDeleted">
+              <PropertyRef Name="License Plates" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xe__Manufacture__6E01572D">
+          <End Role="HangXe" Type="Self.HangXe" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Xe" Type="Self.Xe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HangXe">
@@ -55,17 +95,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__XeDeleted__Manuf__5CD6CB2B">
+          <End Role="HangXe" Type="Self.HangXe" Multiplicity="1" />
+          <End Role="XeDeleted" Type="Self.XeDeleted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="XeDeleted">
+              <PropertyRef Name="Manufacture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WorkerFileModelStoreContainer">
           <EntitySet Name="ChuXe" EntityType="Self.ChuXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChuXeDeleted" EntityType="Self.ChuXeDeleted" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HangXe" EntityType="Self.HangXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HangXeDeleted" EntityType="Self.HangXeDeleted" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Xe" EntityType="Self.Xe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XeDeleted" EntityType="Self.XeDeleted" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ChuXe__License P__48CFD27E" Association="Self.FK__ChuXe__License P__48CFD27E">
             <End Role="Xe" EntitySet="Xe" />
             <End Role="ChuXe" EntitySet="ChuXe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Xe__Manufacture__3A81B327" Association="Self.FK__Xe__Manufacture__3A81B327">
+          <AssociationSet Name="FK__ChuXeDele__Licen__5FB337D6" Association="Self.FK__ChuXeDele__Licen__5FB337D6">
+            <End Role="Xe" EntitySet="Xe" />
+            <End Role="ChuXeDeleted" EntitySet="ChuXeDeleted" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xe__Manufacture__6E01572D" Association="Self.FK__Xe__Manufacture__6E01572D">
             <End Role="HangXe" EntitySet="HangXe" />
             <End Role="Xe" EntitySet="Xe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__XeDeleted__Manuf__5CD6CB2B" Association="Self.FK__XeDeleted__Manuf__5CD6CB2B">
+            <End Role="HangXe" EntitySet="HangXe" />
+            <End Role="XeDeleted" EntitySet="XeDeleted" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -83,6 +146,17 @@
           <AssociationSet Name="FK__Xe__Manufacture__3A81B327" Association="WorkerFileModel.FK__Xe__Manufacture__3A81B327">
             <End Role="HangXe" EntitySet="HangXes" />
             <End Role="Xe" EntitySet="Xes" />
+          </AssociationSet>
+          <EntitySet Name="ChuXeDeleteds" EntityType="WorkerFileModel.ChuXeDeleted" />
+          <EntitySet Name="HangXeDeleteds" EntityType="WorkerFileModel.HangXeDeleted" />
+          <EntitySet Name="XeDeleteds" EntityType="WorkerFileModel.XeDeleted" />
+          <AssociationSet Name="FK__ChuXeDele__Licen__5FB337D6" Association="WorkerFileModel.FK__ChuXeDele__Licen__5FB337D6">
+            <End Role="Xe" EntitySet="Xes" />
+            <End Role="ChuXeDeleted" EntitySet="ChuXeDeleteds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__XeDeleted__Manuf__5CD6CB2B" Association="WorkerFileModel.FK__XeDeleted__Manuf__5CD6CB2B">
+            <End Role="HangXe" EntitySet="HangXes" />
+            <End Role="XeDeleted" EntitySet="XeDeleteds" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ChuXe">
@@ -103,6 +177,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Xes" Relationship="WorkerFileModel.FK__Xe__Manufacture__3A81B327" FromRole="HangXe" ToRole="Xe" />
+          <NavigationProperty Name="XeDeleteds" Relationship="WorkerFileModel.FK__XeDeleted__Manuf__5CD6CB2B" FromRole="HangXe" ToRole="XeDeleted" />
         </EntityType>
         <EntityType Name="Xe">
           <Key>
@@ -114,6 +189,7 @@
           <NavigationProperty Name="ChuXes" Relationship="WorkerFileModel.FK__ChuXe__License_P__48CFD27E" FromRole="Xe" ToRole="ChuXe" />
           <NavigationProperty Name="HangXe" Relationship="WorkerFileModel.FK__Xe__Manufacture__3A81B327" FromRole="Xe" ToRole="HangXe" />
           <Property Name="Time_Parking" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChuXeDeleteds" Relationship="WorkerFileModel.FK__ChuXeDele__Licen__5FB337D6" FromRole="Xe" ToRole="ChuXeDeleted" />
         </EntityType>
         <Association Name="FK__ChuXe__License_P__48CFD27E">
           <End Type="WorkerFileModel.Xe" Role="Xe" Multiplicity="1" />
@@ -135,6 +211,58 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Xe">
+              <PropertyRef Name="Manufacture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChuXeDeleted">
+          <Key>
+            <PropertyRef Name="CMND" />
+            <PropertyRef Name="License_Plates" />
+          </Key>
+          <Property Name="CMND" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="License_Plates" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Xe" Relationship="WorkerFileModel.FK__ChuXeDele__Licen__5FB337D6" FromRole="ChuXeDeleted" ToRole="Xe" />
+        </EntityType>
+        <EntityType Name="HangXeDeleted">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="XeDeleted">
+          <Key>
+            <PropertyRef Name="License_Plates" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="License_Plates" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Manufacture" Type="Int32" Nullable="false" />
+          <Property Name="Time_Parking" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="HangXe" Relationship="WorkerFileModel.FK__XeDeleted__Manuf__5CD6CB2B" FromRole="XeDeleted" ToRole="HangXe" />
+        </EntityType>
+        <Association Name="FK__ChuXeDele__Licen__5FB337D6">
+          <End Type="WorkerFileModel.Xe" Role="Xe" Multiplicity="1" />
+          <End Type="WorkerFileModel.ChuXeDeleted" Role="ChuXeDeleted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Xe">
+              <PropertyRef Name="License_Plates" />
+            </Principal>
+            <Dependent Role="ChuXeDeleted">
+              <PropertyRef Name="License_Plates" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__XeDeleted__Manuf__5CD6CB2B">
+          <End Type="WorkerFileModel.HangXe" Role="HangXe" Multiplicity="1" />
+          <End Type="WorkerFileModel.XeDeleted" Role="XeDeleted" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HangXe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="XeDeleted">
               <PropertyRef Name="Manufacture" />
             </Dependent>
           </ReferentialConstraint>
@@ -166,6 +294,34 @@
           <EntitySetMapping Name="Xes">
             <EntityTypeMapping TypeName="WorkerFileModel.Xe">
               <MappingFragment StoreEntitySet="Xe">
+                <ScalarProperty Name="Time_Parking" ColumnName="Time Parking" />
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+                <ScalarProperty Name="License_Plates" ColumnName="License Plates" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChuXeDeleteds">
+            <EntityTypeMapping TypeName="WorkerFileModel.ChuXeDeleted">
+              <MappingFragment StoreEntitySet="ChuXeDeleted">
+                <ScalarProperty Name="License_Plates" ColumnName="License Plates" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HangXeDeleteds">
+            <EntityTypeMapping TypeName="WorkerFileModel.HangXeDeleted">
+              <MappingFragment StoreEntitySet="HangXeDeleted">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XeDeleteds">
+            <EntityTypeMapping TypeName="WorkerFileModel.XeDeleted">
+              <MappingFragment StoreEntitySet="XeDeleted">
                 <ScalarProperty Name="Time_Parking" ColumnName="Time Parking" />
                 <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
                 <ScalarProperty Name="License_Plates" ColumnName="License Plates" />

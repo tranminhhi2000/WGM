@@ -10,6 +10,11 @@
         <EntityTypeShape EntityType="WorkerFileModel.Xe" Width="1.5" PointX="3" PointY="0.875" />
         <AssociationConnector Association="WorkerFileModel.FK__ChuXe__License_P__48CFD27E" />
         <AssociationConnector Association="WorkerFileModel.FK__Xe__Manufacture__3A81B327" />
+        <EntityTypeShape EntityType="WorkerFileModel.ChuXeDeleted" Width="1.5" PointX="5.25" PointY="4.125" />
+        <EntityTypeShape EntityType="WorkerFileModel.HangXeDeleted" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WorkerFileModel.XeDeleted" Width="1.5" PointX="3" PointY="5.125" />
+        <AssociationConnector Association="WorkerFileModel.FK__ChuXeDele__Licen__5FB337D6" />
+        <AssociationConnector Association="WorkerFileModel.FK__XeDeleted__Manuf__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

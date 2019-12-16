@@ -28,5 +28,8 @@ namespace WorkerGarageManagement
         public virtual DbSet<ChuXe> ChuXes { get; set; }
         public virtual DbSet<HangXe> HangXes { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
+        public virtual DbSet<ChuXeDeleted> ChuXeDeleteds { get; set; }
+        public virtual DbSet<HangXeDeleted> HangXeDeleteds { get; set; }
+        public virtual DbSet<XeDeleted> XeDeleteds { get; set; }
     }
 }

@@ -17,11 +17,13 @@ namespace WorkerGarageManagement
         public HangXe()
         {
             this.Xes = new HashSet<Xe>();
+            this.XeDeleteds = new HashSet<XeDeleted>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Xe> Xes { get; set; }
+        public virtual ICollection<XeDeleted> XeDeleteds { get; set; }
     }
 }

@@ -71,6 +71,9 @@
     <Compile Include="ChuXe.cs">
       <DependentUpon>Information.tt</DependentUpon>
     </Compile>
+    <Compile Include="ChuXeDeleted.cs">
+      <DependentUpon>Information.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChuXeView.cs" />
     <Compile Include="CreateForm.cs">
       <SubType>Form</SubType>
@@ -79,6 +82,9 @@
       <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HangXe.cs">
+      <DependentUpon>Information.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HangXeDeleted.cs">
       <DependentUpon>Information.tt</DependentUpon>
     </Compile>
     <Compile Include="Index.cs">
@@ -130,6 +136,9 @@
       <DependentUpon>RecycleBinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Xe.cs">
+      <DependentUpon>Information.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XeDeleted.cs">
       <DependentUpon>Information.tt</DependentUpon>
     </Compile>
     <Compile Include="XeView.cs" />

@@ -24,6 +24,12 @@ namespace WorkerGarageManagement
             return result;
         }
 
+        public XeDeleted[] GetDeletedBike()
+        {
+            WorkerFileEntities db = new WorkerFileEntities();
+            return db.XeDeleteds.ToArray();
+        }
+
         public ChuXe[] Owners()
         {
             WorkerFileEntities db = new WorkerFileEntities();
@@ -62,6 +68,25 @@ namespace WorkerGarageManagement
         {
             WorkerFileEntities db = new WorkerFileEntities();
             string data = db.HangXes.Where(item => item.ID.Equals(id)).Select(item => item.Name).FirstOrDefault();
+            db.Dispose();
+            return data;
+        }
+        public void AddBikes(string bienSo, string tenXe, int hangXe, DateTime guiXe)
+        {
+            WorkerFileEntities db = new WorkerFileEntities();
+            XeDeleted xed = new XeDeleted();
+            xed.License_Plates = bienSo;
+            xed.Name = tenXe;
+            xed.Manufacture = hangXe;
+            xed.Time_Parking = guiXe;
+            db.XeDeleteds.Add(xed);
+            db.SaveChanges();
+            db.Dispose();
+        }
+        public int ReManufacure(string id)
+        {
+            WorkerFileEntities db = new WorkerFileEntities();
+            int data = db.HangXes.Where(item => item.Name.Equals(id)).Select(item => item.ID).FirstOrDefault();
             db.Dispose();
             return data;
         }
