@@ -20,6 +20,14 @@ namespace WorkerGarageManagement
             this.Load += ListForm_Load;
             this.dgvListForm.DoubleClick += dataGridView1_DoubleClick;
             this.dgvListForm.KeyDown += dataGridView1_KeyDown;
+            btnUpdate.Click += btnUpdate_Click;
+        }
+
+        void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateListForm upl = new UpdateListForm();
+            upl.ShowDialog();
+            
         }
         void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {

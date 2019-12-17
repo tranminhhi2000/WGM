@@ -55,6 +55,8 @@
             // 
             // btnUpInfor
             // 
+            this.btnUpInfor.Checked = true;
+            this.btnUpInfor.CheckState = System.Windows.Forms.CheckState.Checked;
             this.btnUpInfor.Name = "btnUpInfor";
             this.btnUpInfor.Size = new System.Drawing.Size(61, 20);
             this.btnUpInfor.Text = "UPDATE";

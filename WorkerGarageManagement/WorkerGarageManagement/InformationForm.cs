@@ -19,6 +19,14 @@ namespace WorkerGarageManagement
             InitializeComponent();
             this.Load += InformationForm_Load;
             btnCreate.Click += btnCreate_Click;
+            btnUpInfor.Click += btnUpInfor_Click;
+        }
+
+        void btnUpInfor_Click(object sender, EventArgs e)
+        {
+            OwnersForm ow = new OwnersForm();
+            ow.ShowDialog();
+            
         }
 
         void btnCreate_Click(object sender, EventArgs e)
@@ -43,6 +51,7 @@ namespace WorkerGarageManagement
                 view[i].Birthday = data[i].Birthday.Value;
             }
             this.dataGridView1.DataSource = view;
+
         }
     }
 }

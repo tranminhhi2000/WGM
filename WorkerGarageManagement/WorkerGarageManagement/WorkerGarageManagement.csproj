@@ -135,6 +135,12 @@
     <Compile Include="RecycleBinForm.Designer.cs">
       <DependentUpon>RecycleBinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateListForm.Designer.cs">
+      <DependentUpon>UpdateListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xe.cs">
       <DependentUpon>Information.tt</DependentUpon>
     </Compile>
@@ -168,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="RecycleBinForm.resx">
       <DependentUpon>RecycleBinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateListForm.resx">
+      <DependentUpon>UpdateListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Information.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -93,6 +93,7 @@
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Index";
             this.Text = "Woker Garage Management";
             this.ResumeLayout(false);

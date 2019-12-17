@@ -45,11 +45,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(180, 9);
+            this.label1.Location = new System.Drawing.Point(133, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 31);
+            this.label1.Size = new System.Drawing.Size(211, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "XE MỚI";
+            this.label1.Text = "NEW VEHICLE";
             // 
             // label2
             // 
@@ -57,9 +57,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 25);
+            this.label2.Size = new System.Drawing.Size(167, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "BIỂN SỐ XE";
+            this.label2.Text = "License Plates";
             // 
             // label3
             // 
@@ -67,9 +67,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 122);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 25);
+            this.label3.Size = new System.Drawing.Size(157, 25);
             this.label3.TabIndex = 2;
-            this.label3.Text = "TÊN XE";
+            this.label3.Text = "Vehicle Name";
             // 
             // label4
             // 
@@ -77,9 +77,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 179);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 25);
+            this.label4.Size = new System.Drawing.Size(143, 25);
             this.label4.TabIndex = 3;
-            this.label4.Text = "HÃNG XE";
+            this.label4.Text = "Manufacture";
             // 
             // txtSoxe
             // 
@@ -99,13 +99,15 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.DimGray;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.Yellow;
             this.btnSave.Location = new System.Drawing.Point(88, 283);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 35);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "SAVE";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // cboHangxe
             // 
@@ -119,13 +121,15 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.DimGray;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.Yellow;
             this.btnCancel.Location = new System.Drawing.Point(272, 283);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(130, 35);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "CANCEL";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // label5
             // 
@@ -133,9 +137,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 234);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 25);
+            this.label5.Size = new System.Drawing.Size(150, 25);
             this.label5.TabIndex = 10;
-            this.label5.Text = "THỜI GIAN GỬI";
+            this.label5.Text = "Time Parking";
             // 
             // dtpGuixe
             // 
@@ -150,6 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(484, 361);
             this.Controls.Add(this.dtpGuixe);
             this.Controls.Add(this.label5);

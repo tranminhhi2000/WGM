@@ -90,5 +90,15 @@ namespace WorkerGarageManagement
             db.Dispose();
             return data;
         }
+        public void Change(string bienSo, string tenXe, int hangXe, DateTime guiXe)
+        {
+            WorkerFileEntities db = new WorkerFileEntities();
+            Xe soXe = db.Xes.Find(bienSo);
+            soXe.Name = tenXe;
+            soXe.Manufacture = hangXe;
+            soXe.Time_Parking = guiXe;
+            db.SaveChanges();
+            db.Dispose();
+        }
     }
 }
