@@ -18,19 +18,19 @@ namespace WorkerGarageManagement
             business = new LogicLayer();
             InitializeComponent();
             this.Load += ListForm_Load;
-            this.btnUpdate.DoubleClick += dataGridView1_DoubleClick;
-            this.btnUpdate.KeyDown += dataGridView1_KeyDown;
+            this.dgvListForm.DoubleClick += dataGridView1_DoubleClick;
+            this.dgvListForm.KeyDown += dataGridView1_KeyDown;
         }
         void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if(this.btnUpdate.SelectedRows.Count == 1)
+                if(this.dgvListForm.SelectedRows.Count == 1)
                 {
                     if(MessageBox.Show("Do you want delete this?") == System.Windows.Forms.DialogResult.OK )
                     {
                         XeView selected =
-                            (XeView)this.btnUpdate.SelectedRows[0].DataBoundItem;
+                            (XeView)this.dgvListForm.SelectedRows[0].DataBoundItem;
                         var db = new WorkerFileEntities();
                         Xe deleted = db.Xes.Find(selected.License_Plates);
                         db.Xes.Remove(deleted);
@@ -55,7 +55,7 @@ namespace WorkerGarageManagement
 
         void ListForm_Load(object sender, EventArgs e)
         {
-            this.btnUpdate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvListForm.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Xe[] data = business.GetBikes();
             XeView[] view = new XeView[data.Length];
             for (int i = 0; i < data.Length; i++)
@@ -66,7 +66,7 @@ namespace WorkerGarageManagement
                 view[i].Manufacture = business.GetManufacture(data[i].Manufacture);
                 view[i].Time_Parking = data[i].Time_Parking.ToShortDateString();
             }
-            this.btnUpdate.DataSource = view;
+            this.dgvListForm.DataSource = view;
         }
     }
 }
