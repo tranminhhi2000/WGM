@@ -12,13 +12,29 @@ namespace WorkerGarageManagement
 {
     public partial class UpdateListForm : Form
     {
-        LogicLayer business;
-        public UpdateListForm()
+        private LogicLayer business;
+        private string bienSo;
+        public UpdateListForm(string bienSo)
         {
             InitializeComponent();
+            this.bienSo = bienSo;
             business = new LogicLayer();
+            this.Load += UpdateListForm_Load;
             btnSave.Click += btnSave_Click;
             btnCancel.Click += btnCancel_Click;
+        }
+
+        void UpdateListForm_Load(object sender, EventArgs e)
+        {
+            //MessageBox.Show("OK");
+            this.cboHang.DataSource = business.GetManufactures();
+            this.cboHang.DisplayMember = "Name";
+            this.cboHang.ValueMember = "ID";
+            Xe xe = business.GetBike(this.bienSo);
+            this.txtbienSo.Text = xe.License_Plates;
+            this.txtTenxe.Text = xe.Name;
+            this.cboHang.SelectedValue = xe.Manufacture;
+            this.dtpGui.Value = xe.Time_Parking;
         }
 
         void btnCancel_Click(object sender, EventArgs e)
@@ -28,7 +44,15 @@ namespace WorkerGarageManagement
 
         void btnSave_Click(object sender, EventArgs e)
         {
-            business.Change(txtbienSo.Text, txtTenxe.Text, int.Parse(cboHang.SelectedValue.ToString()), dtpGui.Value);
+            var business = new LogicLayer();
+            var bienso = this.txtbienSo.Text;
+            var tenxe = this.txtTenxe.Text;
+            int hangxe = int.Parse(this.cboHang.SelectedValue.ToString());
+            var giogui = this.dtpGui.Value;
+            business.thayDoi(bienso, tenxe, hangxe,giogui);
+            MessageBox.Show("Update class successfully.");
+            this.Close();
+            
         }
     }
 }

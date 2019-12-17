@@ -30,7 +30,6 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnCreate = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUpInfor = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -39,8 +38,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnCreate,
-            this.btnUpInfor});
+            this.btnCreate});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -52,14 +50,6 @@
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(59, 20);
             this.btnCreate.Text = "CREATE";
-            // 
-            // btnUpInfor
-            // 
-            this.btnUpInfor.Checked = true;
-            this.btnUpInfor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnUpInfor.Name = "btnUpInfor";
-            this.btnUpInfor.Size = new System.Drawing.Size(61, 20);
-            this.btnUpInfor.Text = "UPDATE";
             // 
             // dataGridView1
             // 
@@ -94,7 +84,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnCreate;
-        private System.Windows.Forms.ToolStripMenuItem btnUpInfor;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

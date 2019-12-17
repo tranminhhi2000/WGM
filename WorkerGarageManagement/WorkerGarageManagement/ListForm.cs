@@ -25,9 +25,9 @@ namespace WorkerGarageManagement
 
         void btnUpdate_Click(object sender, EventArgs e)
         {
-            UpdateListForm upl = new UpdateListForm();
+            UpdateListForm upl = new UpdateListForm(dgvListForm.SelectedRows[0].Cells[1].Value.ToString());
             upl.ShowDialog();
-            
+            this.OnLoad(null);                                                                                
         }
         void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {

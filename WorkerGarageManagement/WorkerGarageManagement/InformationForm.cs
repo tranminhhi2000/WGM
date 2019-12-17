@@ -19,16 +19,7 @@ namespace WorkerGarageManagement
             InitializeComponent();
             this.Load += InformationForm_Load;
             btnCreate.Click += btnCreate_Click;
-            btnUpInfor.Click += btnUpInfor_Click;
         }
-
-        void btnUpInfor_Click(object sender, EventArgs e)
-        {
-            OwnersForm ow = new OwnersForm();
-            ow.ShowDialog();
-            
-        }
-
         void btnCreate_Click(object sender, EventArgs e)
         {
             OwnersForm onf = new OwnersForm();

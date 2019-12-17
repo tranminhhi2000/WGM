@@ -43,6 +43,7 @@ namespace WorkerGarageManagement
             DateTime time = dtpGuixe.Value;
             business.AddBike(bienSoXe, tenXe, hangXe, time);
             MessageBox.Show("Added successfully");
+            this.Close();
         }
     }
 }
